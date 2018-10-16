@@ -65,8 +65,7 @@ request(queryUrl, function(error, response, body) {
   if (!error && response.statusCode === 200) {
 
     var JS = JSON.parse(body);
-    for (i = 0; i < JS.length; i++)
-    {
+
       var dTime = JS[i].datetime;
         var month = dTime.substring(5,7);
         var year = dTime.substring(0,4);
@@ -87,7 +86,6 @@ request(queryUrl, function(error, response, body) {
       console.log("\n---------------------------------------------------\n");
 
     }
-  }
 });
 }
 function spotSong(parameter) {
