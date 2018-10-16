@@ -33,7 +33,7 @@ function switchCase() {
       break;
 
       default:                            
-      logIt("Invalid Instruction");
+      console.log("Invalid Instruction");
       break;
 
   }
@@ -73,18 +73,18 @@ request(queryUrl, function(error, response, body) {
         var day = dTime.substring(8,10);
         var dateForm = month + "/" + day + "/" + year
   
-      logIt("\n---------------------------------------------------\n");
+      console.log("\n---------------------------------------------------\n");
 
         
-      logIt("Date: " + dateForm);
-      logIt("Name: " + JS[i].venue.name);
-      logIt("City: " + JS[i].venue.city);
+      console.log("Date: " + dateForm);
+      console.log("Name: " + JS[i].venue.name);
+      console.log("City: " + JS[i].venue.city);
       if (JS[i].venue.region !== "")
       {
-        logIt("Country: " + JS[i].venue.region);
+        console.log("Country: " + JS[i].venue.region);
       }
-      logIt("Country: " + JS[i].venue.country);
-      logIt("\n---------------------------------------------------\n");
+      console.log("Country: " + JS[i].venue.country);
+      console.log("\n---------------------------------------------------\n");
 
     }
   }
@@ -105,15 +105,15 @@ function spotSong(parameter) {
     query: searchTrack
   }, function(error, data) {
     if (error) {
-      logIt('Error occurred: ' + error);
+      console.log('Error occurred: ' + error);
       return;
     } else {
-      logIt("\n---------------------------------------------------\n");
-      logIt("Artist: " + data.tracks.items[0].artists[0].name);
-      logIt("Song: " + data.tracks.items[0].name);
-      logIt("Preview: " + data.tracks.items[3].preview_url);
-      logIt("Album: " + data.tracks.items[0].album.name);
-      logIt("\n---------------------------------------------------\n");
+      console.log("\n---------------------------------------------------\n");
+      console.log("Artist: " + data.tracks.items[0].artists[0].name);
+      console.log("Song: " + data.tracks.items[0].name);
+      console.log("Preview: " + data.tracks.items[3].preview_url);
+      console.log("Album: " + data.tracks.items[0].album.name);
+      console.log("\n---------------------------------------------------\n");
       
     }
   });
@@ -133,16 +133,16 @@ function movieInfo(parameter) {
   request(queryUrl, function(err, res, body) {
   	var bodyOf = JSON.parse(body);
     if (!err && res.statusCode === 200) {
-      logIt("\n---------------------------------------------------\n");
-      logIt("Title: " + bodyOf.Title);
-      logIt("Release Year: " + bodyOf.Year);
-      logIt("IMDB Rating: " + bodyOf.imdbRating);
-      logIt("Rotten Tomatoes Rating: " + bodyOf.Ratings[1].Value); 
-      logIt("Country: " + bodyOf.Country);
-      logIt("Language: " + bodyOf.Language);
-      logIt("Plot: " + bodyOf.Plot);
-      logIt("Actors: " + bodyOf.Actors);
-      logIt("\n---------------------------------------------------\n");
+      console.log("\n---------------------------------------------------\n");
+      console.log("Title: " + bodyOf.Title);
+      console.log("Release Year: " + bodyOf.Year);
+      console.log("IMDB Rating: " + bodyOf.imdbRating);
+      console.log("Rotten Tomatoes Rating: " + bodyOf.Ratings[1].Value); 
+      console.log("Country: " + bodyOf.Country);
+      console.log("Language: " + bodyOf.Language);
+      console.log("Plot: " + bodyOf.Plot);
+      console.log("Actors: " + bodyOf.Actors);
+      console.log("\n---------------------------------------------------\n");
     }
   });
 };
@@ -151,7 +151,7 @@ function getRandom() {
 fs.readFile('random.txt', "utf8", function(error, data){
 
     if (error) {
-        return logIt(error);
+        return console.log(error);
       }
 
   
@@ -168,13 +168,13 @@ fs.readFile('random.txt', "utf8", function(error, data){
       {
       	var dLength = dataArr[1].length - 1;
       	var data = dataArr[1].substring(2,dLength);
-      	console.log(data);
+      	console.log.log(data);
       	bandsInTown(data);
       }
       else
       {
 	      var bandName = dataArr[1].trim();
-	      console.log(bandName);
+	      console.log.log(bandName);
 	      bandsInTown(bandName);
 	  }
   	  
@@ -188,16 +188,6 @@ fs.readFile('random.txt', "utf8", function(error, data){
     });
 
 };
-
-function logIt(dataToLog) {
-
-	console.log(dataToLog);
-
-	fs.appendFile('log.txt', dataToLog + '\n', function(err) {
-		
-		if (err) return logIt('Error logging data to file: ' + err);	
-	});
-}
 
 
 switchCase();
